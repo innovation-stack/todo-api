@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Teach TypeScript", "completed": true },
+  { "id": 2, "name": "Teach Angular", "completed": false },
+  { "id": 3, "name": "Teach RxJS", "completed": false },
+  { "id": 4, "name": "Teach NgRx", "completed": true }
+]
