@@ -9,11 +9,7 @@ export class TodosService {
 
   create(todo: any) {
     const todos = this.readFileAsJson() as any[];
-    const newId =
-      Math.max.apply(
-        null,
-        todos.map((todo) => todo.id),
-      ) + 1;
+    const newId = this.obtainNewId(todos);
     const updatedTodo = {
       id: newId,
       ...todo,
@@ -54,5 +50,14 @@ export class TodosService {
   private writeToFile(data: any) {
     const stringified = JSON.stringify(data);
     writeFileSync('./todos.json', stringified);
+  }
+
+  private obtainNewId(todos: any[]) {
+    if (todos.length > 0) {
+      const todoIds = todos.map((todo) => todo.id);
+      return Math.max.apply(null, todoIds) + 1;
+    } else {
+      return 1;
+    }
   }
 }
